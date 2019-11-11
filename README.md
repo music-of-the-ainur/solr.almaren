@@ -1,6 +1,6 @@
 # Solr Connector
 
-Solr Connector was implemented using (https://github.com/lucidworks/spark-solr)[https://github.com/lucidworks/spark-solr].
+Solr Connector was implemented using [https://github.com/lucidworks/spark-solr](https://github.com/lucidworks/spark-solr).
 
 ## Source
 
