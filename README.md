@@ -1,1 +1,1 @@
-# Solr Connector for Almaren Framework
+# Solr Connector
