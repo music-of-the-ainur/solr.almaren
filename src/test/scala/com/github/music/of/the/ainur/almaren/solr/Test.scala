@@ -17,19 +17,34 @@ class Test extends FunSuite with BeforeAndAfter {
   
   spark.sparkContext.setLogLevel("ERROR")
 
-  bootstrap
+  // Create twitter table with data
+  val jsonData = bootstrap
 
+  // Save Twitter data to Solr
   val twitter = almaren.builder
-    .sourceSql("select monotonically_increasing_id() as id,* from twitter")
-    .coalesce(10)
-    .targetSolr("twitter","localhost:9983",SaveMode.Overwrite,Map("batch_size" -> "500"))
-
+    .sourceSql("select monotonically_increasing_id() as new_id,* from twitter")
+    .dsl("""
+	|new_id$id:LongType
+    |text$text:StringType""".stripMargin)
+    .targetSolr("gettingstarted","localhost:9983",SaveMode.Overwrite,Map("batch_size" -> "500"))
   almaren.batch(twitter)
+
+  // Read Data From Solr
+  val readTwitter = almaren.builder.sourceSolr("gettingstarted","localhost:9983")
+  val solrData = almaren.batch(readTwitter)
+
+  val inputCount = jsonData.count()
+  val solrDataCount = solrData.count()
+
+  test("number of records should match") {
+    assert(inputCount == solrDataCount)
+  }
 
   def bootstrap = {
     import spark.implicits._
     val res = spark.read.json("/Users/mantovani/projects/modakanalytics/solr-connector.almaren/src/test/resources/sample_data/twitter_search_data.json")
     res.createTempView("twitter")
+    res
   }
 
   after {

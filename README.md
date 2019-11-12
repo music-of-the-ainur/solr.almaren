@@ -6,7 +6,8 @@ Solr Connector was implemented using [https://github.com/lucidworks/spark-solr](
 
 ```scala
 import com.github.music.of.the.ainur.almaren.Almaren
-import com.github.music.of.the.ainur.almaren.solr.Solr._
+import com.github.music.of.the.ainur.almaren.builder.Core.Implicit
+import com.github.music.of.the.ainur.almaren.solr.Solr.SolrImplicit
 
 val movies = almaren.builder
     .sourceSql("collection","localhost:2181")
@@ -17,7 +18,8 @@ val movies = almaren.builder
 
 ```scala
 import com.github.music.of.the.ainur.almaren.Almaren
-import com.github.music.of.the.ainur.almaren.solr.Solr._
+import com.github.music.of.the.ainur.almaren.builder.Core.Implicit
+import com.github.music.of.the.ainur.almaren.solr.Solr.SolrImplicit
 
 val movies = almaren.builder
     .targetSolr("collection","localhost:2181")
