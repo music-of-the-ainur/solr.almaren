@@ -40,7 +40,7 @@ class Test extends FunSuite with BeforeAndAfter {
 
   def bootstrap = {
     import spark.implicits._
-    val res = spark.read.json("/Users/mantovani/projects/modakanalytics/solr-connector.almaren/src/test/resources/sample_data/twitter_search_data.json")
+    val res = spark.read.json("src/test/resources/sample_data/twitter_search_data.json")
     res.createTempView("twitter")
     res
   }
