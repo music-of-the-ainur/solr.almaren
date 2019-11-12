@@ -31,13 +31,13 @@ private[ainur] class TargetSolr(collection: String,zkHost: String, saveMode:Save
 }
 
 private[ainur] trait SolrConnector extends Core {
-  def targetSolr(collection: String,zkHost: String = "localhost:8983",saveMode:SaveMode = SaveMode.ErrorIfExists, options:Map[String,String] = Map()): Option[List[Container]] =
+  def targetSolr(collection: String,zkHost: String = "localhost:9983",saveMode:SaveMode = SaveMode.ErrorIfExists, options:Map[String,String] = Map()): Option[List[Container]] =
     new TargetSolr(collection,zkHost,saveMode,options)
 
-  def sourceSolr(collection: String,zkHost: String = "localhost:8983", options:Map[String,String] = Map()): Option[List[Container]] =
+  def sourceSolr(collection: String,zkHost: String = "localhost:9983", options:Map[String,String] = Map()): Option[List[Container]] =
     new SourceSolr(collection,zkHost,options)
 }
 
 object Solr {
-  implicit class Implicit(val container: Option[List[Container]]) extends SolrConnector
+  implicit class SolrImplicit(val container: Option[List[Container]]) extends SolrConnector
 }
