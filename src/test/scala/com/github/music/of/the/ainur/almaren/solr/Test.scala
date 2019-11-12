@@ -22,10 +22,7 @@ class Test extends FunSuite with BeforeAndAfter {
 
   // Save Twitter data to Solr
   val twitter = almaren.builder
-    .sourceSql("select monotonically_increasing_id() as new_id,* from twitter")
-    .dsl("""
-	|new_id$id:LongType
-    |text$text:StringType""".stripMargin)
+    .sourceSql("select id,text from twitter")
     .targetSolr("gettingstarted","localhost:9983",SaveMode.Overwrite,Map("batch_size" -> "500"))
   almaren.batch(twitter)
 
@@ -33,6 +30,7 @@ class Test extends FunSuite with BeforeAndAfter {
   val readTwitter = almaren.builder.sourceSolr("gettingstarted","localhost:9983")
   val solrData = almaren.batch(readTwitter)
 
+  // Test count
   val inputCount = jsonData.count()
   val solrDataCount = solrData.count()
 
