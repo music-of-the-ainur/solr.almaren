@@ -12,10 +12,13 @@ class Test extends FunSuite with BeforeAndAfter {
 
   val spark = almaren.spark
     .master("local[*]")
+    .config("spark.ui.enabled","false")
     .config("spark.sql.shuffle.partitions", "1")
     .getOrCreate()
   
   spark.sparkContext.setLogLevel("ERROR")
+
+  import spark.implicits._
 
   // Create twitter table with data
   val jsonData = bootstrap
@@ -23,12 +26,15 @@ class Test extends FunSuite with BeforeAndAfter {
   // Save Twitter data to Solr
   val twitter = almaren.builder
     .sourceSql("select id,text from twitter")
-    .targetSolr("gettingstarted","localhost:9983",SaveMode.Overwrite,Map("batch_size" -> "500","commit_within" -> "1"))
+    .targetSolr("gettingstarted","localhost:9983",SaveMode.Overwrite,Map("batch_size" -> "10","commit_within" -> "1"))
   almaren.batch(twitter)
 
   // Read Data From Solr
   val readTwitter = almaren.builder.sourceSolr("gettingstarted","localhost:9983")
   val solrData = almaren.batch(readTwitter)
+
+  // Waiting 10 seconds for Solr commit...
+  Thread.sleep(10000) 
 
   // Test count
   val inputCount = jsonData.count()
@@ -38,8 +44,13 @@ class Test extends FunSuite with BeforeAndAfter {
     assert(inputCount == solrDataCount)
   }
 
+  // Check if ids match
+  val diff = jsonData.as("json").join(solrData.as("solr"), $"json.id" <=> $"solr.id","leftanti").count()
+  test("match records") {
+    assert(diff == 0)
+  }
+
   def bootstrap = {
-    import spark.implicits._
     val res = spark.read.json("src/test/resources/sample_data/twitter_search_data.json")
     res.createTempView("twitter")
     res
