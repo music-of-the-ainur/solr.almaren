@@ -1,6 +1,6 @@
 # Solr Connector
 
-[![Build Status](https://travis-ci.com/modakanalytics/solr-connector.almaren.svg?token=TEB3zRDqVUuChez9334q&branch=master)](https://travis-ci.com/modakanalytics/solr-connector.almaren)
+[![Build Status](https://travis-ci.com/modakanalytics/solr.almaren.svg?token=TEB3zRDqVUuChez9334q&branch=master)](https://travis-ci.com/modakanalytics/solr.almaren)
 
 Solr Connector was implemented using [https://github.com/lucidworks/spark-solr](https://github.com/lucidworks/spark-solr).
 
