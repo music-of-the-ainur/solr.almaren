@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.com/modakanalytics/solr.almaren.svg?token=TEB3zRDqVUuChez9334q&branch=master)](https://travis-ci.com/modakanalytics/solr.almaren)
 
 Solr Connector was implemented using [https://github.com/lucidworks/spark-solr](https://github.com/lucidworks/spark-solr). The *Solr Connector* just works on Solr Cloud.
-For all the options available for the connector check on this [https://github.com/lucidworks/spark-solr#configuration-and-tuning](link).
+For all the options available for the connector check on this [link](https://github.com/lucidworks/spark-solr#configuration-and-tuning).
 
 ## Source and Target
 
