@@ -2,27 +2,16 @@
 
 [![Build Status](https://travis-ci.com/modakanalytics/solr.almaren.svg?token=TEB3zRDqVUuChez9334q&branch=master)](https://travis-ci.com/modakanalytics/solr.almaren)
 
-Solr Connector was implemented using [https://github.com/lucidworks/spark-solr](https://github.com/lucidworks/spark-solr).
+Solr Connector was implemented using [https://github.com/lucidworks/spark-solr](https://github.com/lucidworks/spark-solr). The *Solr Connector* just works on Solr Cloud.
+For all the options available for the connector check on this [https://github.com/lucidworks/spark-solr#configuration-and-tuning](link).
 
-## Source
-
-```scala
-import com.github.music.of.the.ainur.almaren.Almaren
-import com.github.music.of.the.ainur.almaren.builder.Core.Implicit
-import com.github.music.of.the.ainur.almaren.solr.Solr.SolrImplicit
-
-val movies = almaren.builder
-    .sourceSql("collection","localhost:2181")
-```
-
-
-## Target
+## Source and Target
 
 ```scala
-import com.github.music.of.the.ainur.almaren.Almaren
-import com.github.music.of.the.ainur.almaren.builder.Core.Implicit
 import com.github.music.of.the.ainur.almaren.solr.Solr.SolrImplicit
 
-val movies = almaren.builder
-    .targetSolr("collection","localhost:2181")
+almaren.builder.sourceSql("collection","zkHost1:2181,zkHost2:2181",options)
+
+almaren.builder.targetSolr("collection","zkHost1:2181,zkHost2:2181",options)
+
 ```
