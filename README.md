@@ -13,7 +13,7 @@ import com.github.music.of.the.ainur.almaren.solr.Solr.SolrImplicit
 
 val almaren:Almaren = Almaren("App Name")
 
-almaren.builder.sourceSql("collection","zkHost1:2181,zkHost2:2181",options)
+almaren.builder.sourceSolr("collection","zkHost1:2181,zkHost2:2181",options)
 
 almaren.builder.targetSolr("collection","zkHost1:2181,zkHost2:2181",options)
 
