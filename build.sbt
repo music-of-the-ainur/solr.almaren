@@ -1,4 +1,4 @@
-ThisBuild / name := "solr-connector.almaren"
+ThisBuild / name := "solr.almaren"
 ThisBuild / organization := "com.github.music-of-the-ainur"
 
 lazy val scala211 = "2.11.12"
