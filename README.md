@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.com/music-of-the-ainur/solr.almaren.svg?branch=master)](https://travis-ci.com/music-of-the-ainur/solr.almaren)
 
 ```
-libraryDependencies += "com.github.music-of-the-ainur" %% "almaren-framework" % "0.0.1-2-4"
+libraryDependencies += "com.github.music-of-the-ainur" %% "solr-almaren" % "0.0.1-2-4"
 ```
 
 Solr Connector was implemented using [https://github.com/lucidworks/spark-solr](https://github.com/lucidworks/spark-solr). The *Solr Connector* just works on Solr Cloud.
