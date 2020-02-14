@@ -24,3 +24,27 @@ dependencyOverrides += "com.fasterxml.jackson.core" % "jackson-core" % "2.9.8"
 enablePlugins(GitVersioning)
 
 resolvers += "spring" at "https://repo.spring.io/plugins-release"
+
+resolvers +=
+  "Sonatype OSS Snapshots" at "https://oss.sonatype.org/service/local/repositories/releases/content"
+
+ThisBuild / scmInfo := Some(
+  ScmInfo(
+    url("https://github.com/music-of-the-ainur/solr.almaren"),
+    "scm:git@github.com:music-of-the-ainur/solr.almaren.git"
+  )
+)
+ThisBuild / developers := List(
+  Developer(
+    id    = "mantovani",
+    name  = "Daniel Mantovani",
+    email = "daniel.mantovani@modak.com",
+    url   = url("https://github.com/music-of-the-ainur")
+  )
+)
+
+ThisBuild / description := "Solr Connector For Almaren Framework"
+ThisBuild / licenses := List("Apache 2" -> new URL("http://www.apache.org/licenses/LICENSE-2.0.txt"))
+ThisBuild / homepage := Some(url("https://github.com/music-of-the-ainur/solr.almaren"))
+ThisBuild / organizationName := "Music of Ainur"
+ThisBuild / organizationHomepage := Some(url("https://github.com/music-of-the-ainur"))
