@@ -48,3 +48,15 @@ ThisBuild / licenses := List("Apache 2" -> new URL("http://www.apache.org/licens
 ThisBuild / homepage := Some(url("https://github.com/music-of-the-ainur/solr.almaren"))
 ThisBuild / organizationName := "Music of Ainur"
 ThisBuild / organizationHomepage := Some(url("https://github.com/music-of-the-ainur"))
+
+
+// Remove all additional repository other than Maven Central from POM
+ThisBuild / pomIncludeRepository := { _ => false }
+ThisBuild / publishTo := {
+  val nexus = "https://oss.sonatype.org/"
+  if (isSnapshot.value) Some("snapshots" at nexus + "content/repositories/snapshots")
+  else Some("releases" at nexus + "service/local/staging/deploy/maven2")
+}
+
+ThisBuild / publishMavenStyle := true
+updateOptions := updateOptions.value.withGigahorse(false)
