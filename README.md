@@ -1,6 +1,6 @@
 # Solr Connector
 
-[![Build Status](https://travis-ci.com/modakanalytics/solr.almaren.svg?token=TEB3zRDqVUuChez9334q&branch=master)](https://travis-ci.com/modakanalytics/solr.almaren)
+[![Build Status](https://travis-ci.com/music-of-the-ainur/solr.almaren.svg?branch=master)](https://travis-ci.com/music-of-the-ainur/solr.almaren)
 
 ```
 libraryDependencies += "com.github.music-of-the-ainur" %% "almaren-framework" % "0.0.1-2-4"
