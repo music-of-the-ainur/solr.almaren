@@ -6,7 +6,7 @@ import com.github.music.of.the.ainur.almaren.builder.Core
 import com.github.music.of.the.ainur.almaren.state.core.{Target,Source}
 import com.lucidworks.spark._
 
-private[ainur] class SourceSolr(collection: String,zkHost: String, options:Map[String,String]) extends Source {
+private[almaren] case class SourceSolr(collection: String,zkHost: String, options:Map[String,String]) extends Source {
   def source(df: DataFrame): DataFrame = {
     logger.info(s"collection:{$collection}, zkHost:{$zkHost}, options:{$options}")
     df.sparkSession.read.format("solr")
@@ -17,7 +17,7 @@ private[ainur] class SourceSolr(collection: String,zkHost: String, options:Map[S
   }
 }
 
-private[ainur] class TargetSolr(collection: String,zkHost: String, saveMode:SaveMode, options:Map[String,String]) extends Target {
+private[almaren] case class TargetSolr(collection: String,zkHost: String, saveMode:SaveMode, options:Map[String,String]) extends Target {
   def target(df: DataFrame): DataFrame = {
     logger.info(s"collection:{$collection}, zkHost:{$zkHost}, saveMode:{$saveMode}, options:{$options}")
     df.write.format("solr")
@@ -30,14 +30,14 @@ private[ainur] class TargetSolr(collection: String,zkHost: String, saveMode:Save
   }
 }
 
-private[ainur] trait SolrConnector extends Core {
-  def targetSolr(collection: String,zkHost: String = "localhost:9983",saveMode:SaveMode = SaveMode.ErrorIfExists, options:Map[String,String] = Map()): Option[List[Container]] =
-    new TargetSolr(collection,zkHost,saveMode,options)
+private[almaren] trait SolrConnector extends Core {
+  def targetSolr(collection: String,zkHost: String = "localhost:9983",saveMode:SaveMode = SaveMode.ErrorIfExists, options:Map[String,String] = Map()): List[Container] =
+     TargetSolr(collection,zkHost,saveMode,options)
 
-  def sourceSolr(collection: String,zkHost: String = "localhost:9983", options:Map[String,String] = Map()): Option[List[Container]] =
-    new SourceSolr(collection,zkHost,options)
+  def sourceSolr(collection: String,zkHost: String = "localhost:9983", options:Map[String,String] = Map()): List[Container] =
+    SourceSolr(collection,zkHost,options)
 }
 
 object Solr {
-  implicit class SolrImplicit(val container: Option[List[Container]]) extends SolrConnector
+  implicit class SolrImplicit(val container: List[Container]) extends SolrConnector
 }

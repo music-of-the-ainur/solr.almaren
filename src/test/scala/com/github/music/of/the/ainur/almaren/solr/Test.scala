@@ -26,12 +26,10 @@ class Test extends FunSuite with BeforeAndAfter {
   // Save Twitter data to Solr
   val twitter = almaren.builder
     .sourceSql("select id,text from twitter")
-    .targetSolr("gettingstarted","localhost:9983",SaveMode.Overwrite,Map("commit_within" -> "1","batch_size" -> "1"))
-  almaren.batch(twitter)
+    .targetSolr("gettingstarted","localhost:9983",SaveMode.Overwrite,Map("commit_within" -> "1","batch_size" -> "1")).batch
 
   // Read Data From Solr
-  val readTwitter = almaren.builder.sourceSolr("gettingstarted","localhost:9983")
-  val solrData = almaren.batch(readTwitter)
+  val solrData = almaren.builder.sourceSolr("gettingstarted","localhost:9983").batch
 
   // Waiting 30 seconds for Solr commit...
   Thread.sleep(30000)
