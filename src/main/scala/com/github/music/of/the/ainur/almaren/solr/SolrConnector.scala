@@ -17,7 +17,7 @@ private[almaren] case class SourceSolr(collection: String,zkHost: String, option
   }
 }
 
-private[almaren] case class TargetSolr(collection: String,zkHost: String, saveMode:SaveMode, options:Map[String,String]) extends Target {
+private[almaren] case class TargetSolr(collection: String,zkHost: String, options:Map[String,String],saveMode:SaveMode) extends Target {
   def target(df: DataFrame): DataFrame = {
     logger.info(s"collection:{$collection}, zkHost:{$zkHost}, saveMode:{$saveMode}, options:{$options}")
     df.write.format("solr")
@@ -31,8 +31,8 @@ private[almaren] case class TargetSolr(collection: String,zkHost: String, saveMo
 }
 
 private[almaren] trait SolrConnector extends Core {
-  def targetSolr(collection: String,zkHost: String = "localhost:9983",saveMode:SaveMode = SaveMode.ErrorIfExists, options:Map[String,String] = Map()): List[Container] =
-     TargetSolr(collection,zkHost,saveMode,options)
+  def targetSolr(collection: String,zkHost: String = "localhost:9983",options:Map[String,String] = Map(),saveMode:SaveMode = SaveMode.ErrorIfExists): List[Container] =
+     TargetSolr(collection,zkHost,options,saveMode)
 
   def sourceSolr(collection: String,zkHost: String = "localhost:9983", options:Map[String,String] = Map()): List[Container] =
     SourceSolr(collection,zkHost,options)
