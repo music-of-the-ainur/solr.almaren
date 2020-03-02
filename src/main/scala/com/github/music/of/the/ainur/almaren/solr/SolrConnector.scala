@@ -1,7 +1,7 @@
 package com.github.music.of.the.ainur.almaren.solr
 
 import org.apache.spark.sql.{DataFrame,SaveMode}
-import com.github.music.of.the.ainur.almaren.Container
+import com.github.music.of.the.ainur.almaren.Tree
 import com.github.music.of.the.ainur.almaren.builder.Core
 import com.github.music.of.the.ainur.almaren.state.core.{Target,Source}
 import com.lucidworks.spark._
@@ -31,13 +31,13 @@ private[almaren] case class TargetSolr(collection: String,zkHost: String, option
 }
 
 private[almaren] trait SolrConnector extends Core {
-  def targetSolr(collection: String,zkHost: String = "localhost:9983",options:Map[String,String] = Map(),saveMode:SaveMode = SaveMode.ErrorIfExists): List[Container] =
+  def targetSolr(collection: String,zkHost: String = "localhost:9983",options:Map[String,String] = Map(),saveMode:SaveMode = SaveMode.ErrorIfExists): Option[Tree] =
      TargetSolr(collection,zkHost,options,saveMode)
 
-  def sourceSolr(collection: String,zkHost: String = "localhost:9983", options:Map[String,String] = Map()): List[Container] =
+  def sourceSolr(collection: String,zkHost: String = "localhost:9983", options:Map[String,String] = Map()): Option[Tree] =
     SourceSolr(collection,zkHost,options)
 }
 
 object Solr {
-  implicit class SolrImplicit(val container: List[Container]) extends SolrConnector
+  implicit class SolrImplicit(val container: Option[Tree]) extends SolrConnector
 }
