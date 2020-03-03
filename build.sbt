@@ -14,7 +14,7 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % sparkVersion % "provided",
   "org.apache.spark" %% "spark-sql" % sparkVersion % "provided",
   "com.github.music-of-the-ainur" %% "almaren-framework" % "0.2.3-2-4" % "provided",
-  "com.lucidworks.spark" % "spark-solr" % "3.7.1" % "provided" excludeAll(
+  "com.lucidworks.spark" % "spark-solr" % "3.7.1" excludeAll(
     ExclusionRule("org.apache.avro","avro-mapred"),
     ExclusionRule("org.apache.hadoop","hadoop-hdfs")
   ),
