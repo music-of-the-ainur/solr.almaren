@@ -10,7 +10,7 @@ Solr Connector was implemented using [https://github.com/lucidworks/spark-solr](
 For all the options available for the connector check on this [link](https://github.com/lucidworks/spark-solr#configuration-and-tuning).
 
 ```
-spark-shell --master local[*] --packages "com.github.music-of-the-ainur:almaren-framework_2.11:0.2.3-2-4,com.github.music-of-the-ainur:solr-almaren_2.11:0.2.4-2-4" --repositories https://repo.boundlessgeo.com/main/
+spark-shell --master local[*] --packages "com.github.music-of-the-ainur:almaren-framework_2.11:0.2.5-$SPARK_VERSION,com.github.music-of-the-ainur:solr-almaren_2.11:0.2.5-2-4" --repositories https://repo.boundlessgeo.com/main/
 ```
 
 
