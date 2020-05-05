@@ -18,6 +18,8 @@ libraryDependencies ++= Seq(
     ExclusionRule(organization = "org.apache.hadoop"),
     ExclusionRule(organization = "org.apache.spark")
   ),
+  // Mising library from spark-solr connector
+  "commons-httpclient" % "commons-httpclient" % "3.1",
   "com.typesafe.scala-logging" %% "scala-logging" % "3.9.0",
   "org.scalatest" %% "scalatest" % "3.0.5" % "test"
 )
