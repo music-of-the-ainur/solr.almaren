@@ -16,8 +16,6 @@ spark-shell --master local[*] --packages "com.github.music-of-the-ainur:almaren-
 
 ## Source and Target
 
-## Example
-
 ### Source 
 #### Parameteres
 
@@ -33,6 +31,21 @@ spark-shell --master local[*] --packages "com.github.music-of-the-ainur:almaren-
 | rows      |   specify the number of rows to be displayed on the page(100)              |
 | max_rows   |          Limits the result set to a maximum number of rows(5000)    |
 |request_handler | Set the Solr request handler for queries("/export","/select")|
+#### Example
+
+
+```scala
+import com.github.music.of.the.ainur.almaren.Almaren
+import com.github.music.of.the.ainur.almaren.solr.Solr.SolrImplicit
+
+val almaren:Almaren = Almaren("App Name")
+
+almaren.builder.sourceSolr("collection","zkHost1:2181,zkHost2:2181",Map("field_names" -> "first_name,last_name","rows" -> 100))
+
+almaren.builder.targetSolr("collection","zkHost1:2181,zkHost2:2181",options)
+
+```
+
 
 
 ### Target:
@@ -42,7 +55,7 @@ spark-shell --master local[*] --packages "com.github.music-of-the-ainur:almaren-
 |------------|-------------------------|
 | collection          | collection name       |
 | ZookeeperHost(zkhost)  | localhost:9983                   |
-|Savemode| SaveMode.ErrorIfExists
+|Savemode| SaveMode.ErrorIfExists |
 | options    |  Description(Value)|
 |-------------| -------------|
 | soft_commit_secs      |  set soft_commit_sec(10 seconds)         |
@@ -51,22 +64,7 @@ spark-shell --master local[*] --packages "com.github.music-of-the-ainur:almaren-
 | gen_uniq_key      |  generating unique key for each document(true)               |
 | solr_field_types   | specify field types for solr("rating:string,title:text_en")               |
 
-
-
-
-```scala
-import com.github.music.of.the.ainur.almaren.Almaren
-import com.github.music.of.the.ainur.almaren.solr.Solr.SolrImplicit
-
-val almaren:Almaren = Almaren("App Name")
-
-almaren.builder.sourceSolr("collection","zkHost1:2181,zkHost2:2181",options)
-
-almaren.builder.targetSolr("collection","zkHost1:2181,zkHost2:2181",options)
-
-```
-
-## Example
+#### Example
 
 ```scala
 import com.github.music.of.the.ainur.almaren.solr.Solr.SolrImplicit
@@ -82,3 +80,4 @@ almaren.builder
     .targetSolr("deputies","cloudera:2181,cloudera1:2181,cloudera2:2181/solr",Map("batch_size" -> "100000","commit_within" -> "10000"),SaveMode.Overwrite)
     .batch
 ```
+
