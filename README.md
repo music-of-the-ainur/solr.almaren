@@ -10,7 +10,7 @@ Solr Connector was implemented using [https://github.com/lucidworks/spark-solr](
 For all the options available for the connector check on this [link](https://github.com/lucidworks/spark-solr#configuration-and-tuning).
 
 ```
-spark-shell --master local[*] --packages "com.github.music-of-the-ainur:almaren-framework_2.11:0.2.5-$SPARK_VERSION,com.github.music-of-the-ainur:solr-almaren_2.11:0.2.5-2-4" --repositories https://repo.boundlessgeo.com/main/
+spark-shell --master "local[*]" --packages "com.github.music-of-the-ainur:almaren-framework_2.11:0.2.8-$SPARK_VERSION,com.github.music-of-the-ainur:solr-almaren_2.11:0.2.5-2-4" --repositories https://repo.boundlessgeo.com/main/
 ```
 
 
@@ -38,7 +38,7 @@ spark-shell --master local[*] --packages "com.github.music-of-the-ainur:almaren-
 import com.github.music.of.the.ainur.almaren.Almaren
 import com.github.music.of.the.ainur.almaren.solr.Solr.SolrImplicit
 
-val almaren:Almaren = Almaren("App Name")
+val almaren = Almaren("App Name")
 
 almaren.builder.sourceSolr("collection","zkHost1:2181,zkHost2:2181",Map("field_names" -> "first_name,last_name","rows" -> 100))
 
