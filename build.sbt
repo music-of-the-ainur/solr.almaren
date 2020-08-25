@@ -21,7 +21,11 @@ libraryDependencies ++= Seq(
   // Mising library from spark-solr connector
   "commons-httpclient" % "commons-httpclient" % "3.1",
   "com.typesafe.scala-logging" %% "scala-logging" % "3.9.0",
-  "org.scalatest" %% "scalatest" % "3.0.5" % "test"
+  "org.scalatest" %% "scalatest" % "3.0.5" % "test",
+  "com.lucidworks.spark" % "spark-solr" % "3.7.1" % "test" excludeAll(
+    ExclusionRule(organization = "org.apache.hadoop"),
+    ExclusionRule(organization = "org.apache.spark")
+  )
 )
 
 enablePlugins(GitVersioning)
