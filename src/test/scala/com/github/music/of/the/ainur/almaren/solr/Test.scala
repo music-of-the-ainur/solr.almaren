@@ -31,8 +31,8 @@ class Test extends FunSuite with BeforeAndAfter {
   // Read Data From Solr
   val solrData = almaren.builder.sourceSolr("gettingstarted","localhost:9983").batch
 
-  // Waiting 30 seconds for Solr commit...
-  Thread.sleep(30000)
+  // Waiting 60 seconds for Solr commit...
+  Thread.sleep(60000)
 
   // Test count
   val inputCount = jsonData.count()
