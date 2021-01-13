@@ -30,7 +30,7 @@ libraryDependencies ++= Seq(
 
 enablePlugins(GitVersioning)
 
-resolvers += "spring" at "https://repo.spring.io/plugins-release"
+resolvers += "maven-restlet" at "http://maven.restlet.org"
 
 resolvers +=
   "Sonatype OSS Snapshots" at "https://oss.sonatype.org/service/local/repositories/releases/content"
