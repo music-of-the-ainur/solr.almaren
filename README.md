@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.com/music-of-the-ainur/solr.almaren.svg?branch=master)](https://travis-ci.com/music-of-the-ainur/solr.almaren)
 
 ```
-libraryDependencies += "com.github.music-of-the-ainur" %% "solr-almaren" % "0.2.7-2-4"
+libraryDependencies += "com.github.music-of-the-ainur" %% "solr-almaren" % "0.2.9-2-4"
 ```
 
 Solr Connector was implemented using [https://github.com/lucidworks/spark-solr](https://github.com/lucidworks/spark-solr). The *Solr Connector* just works on Solr Cloud.
@@ -19,18 +19,18 @@ spark-shell --master "local[*]" --packages "com.github.music-of-the-ainur:almare
 ### Source 
 #### Parameteres
 
-| Parameters | Description             |
-|------------|-------------------------|
-| collection          | collection name       |
-| ZookeeperHost(zkhost)  | localhost:9983                   |
-| options    |  Description(Value)|
-|-------------| -------------|
-| query     |   limits the rows you want to load into Spark("body_t:solr")        |
-| fields   | specify a subset of fields("id,author_s,favorited_b")  |
-| filters | to apply filters on the values in documents("firstName:Sam,lastName:Powell")                |
-| rows      |   specify the number of rows to be displayed on the page(100)              |
-| max_rows   |          Limits the result set to a maximum number of rows(5000)    |
-|request_handler | Set the Solr request handler for queries("/export","/select")|
+| Parameters            | Description                                                                  |
+|-----------------------|------------------------------------------------------------------------------|
+| collection            | collection name                                                              |
+| ZookeeperHost(zkhost) | localhost:9983                                                               |
+| options               | Description(Value)                                                           |
+|-----------------------|------------------------------------------------------------------------------|
+| query                 | limits the rows you want to load into Spark("body_t:solr")                   |
+| fields                | specify a subset of fields("id,author_s,favorited_b")                        |
+| filters               | to apply filters on the values in documents("firstName:Sam,lastName:Powell") |
+| rows                  | specify the number of rows to be displayed on the page(100)                  |
+| max_rows              | Limits the result set to a maximum number of rows(5000)                      |
+| request_handler       | Set the Solr request handler for queries("/export","/select")                |
 #### Example
 
 
@@ -51,18 +51,18 @@ almaren.builder.targetSolr("collection","zkHost1:2181,zkHost2:2181",options)
 ### Target:
 #### Parameters
 
-| Parameters | Description             |
-|------------|-------------------------|
-| collection          | collection name       |
-| ZookeeperHost(zkhost)  | localhost:9983                   |
-|Savemode| SaveMode.ErrorIfExists |
-| options    |  Description(Value)|
-|-------------| -------------|
-| soft_commit_secs      |  set soft_commit_sec(10 seconds)         |
-| commit_within   | force commit to happen after specified time(5000 milliSeconds)  |
-| batch_size | number of documents sent in a HTTP call (1000)                  |
-| gen_uniq_key      |  generating unique key for each document(true)               |
-| solr_field_types   | specify field types for solr("rating:string,title:text_en")               |
+| Parameters            | Description                                                    |
+|-----------------------|----------------------------------------------------------------|
+| collection            | collection name                                                |
+| ZookeeperHost(zkhost) | localhost:9983                                                 |
+| Savemode              | SaveMode.ErrorIfExists                                         |
+| options               | Description(Value)                                             |
+|-----------------------|----------------------------------------------------------------|
+| soft_commit_secs      | set soft_commit_sec(10 seconds)                                |
+| commit_within         | force commit to happen after specified time(5000 milliSeconds) |
+| batch_size            | number of documents sent in a HTTP call (1000)                 |
+| gen_uniq_key          | generating unique key for each document(true)                  |
+| solr_field_types      | specify field types for solr("rating:string,title:text_en")    |
 
 #### Example
 
