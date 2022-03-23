@@ -12,7 +12,7 @@ scalacOptions ++= Seq("-deprecation", "-feature")
 libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % sparkVersion % "provided",
   "org.apache.spark" %% "spark-sql" % sparkVersion % "provided",
-  "com.github.music-of-the-ainur" %% "almaren-framework" % "0.9.3-3-1" % "provided",
+  "com.github.music-of-the-ainur" %% "almaren-framework" % "0.9.3-3.1" % "provided",
   "com.lucidworks.spark" % "spark-solr" % "4.0.2" % "provided" excludeAll(
     ExclusionRule(organization = "org.apache.hadoop"),
     ExclusionRule(organization = "org.apache.spark")
@@ -29,7 +29,7 @@ libraryDependencies ++= Seq(
 
 enablePlugins(GitVersioning)
 
-resolvers += "maven-restlet" at "http://maven.restlet.org"
+resolvers += "Central Maven repository" at "https://repo.maven.apache.org/maven2"
 
 resolvers +=
   "Sonatype OSS Snapshots" at "https://oss.sonatype.org/service/local/repositories/releases/content"
@@ -46,6 +46,12 @@ ThisBuild / developers := List(
     name  = "Daniel Mantovani",
     email = "daniel.mantovani@modak.com",
     url   = url("https://github.com/music-of-the-ainur")
+  ),
+  Developer(
+    id = "badrinathpatchikolla",
+    name = "Badrinath Patchikolla",
+    email = "badrinath.patchikolla@modakanalytics.com",
+    url = url("https://github.com/music-of-the-ainur")
   )
 )
 
