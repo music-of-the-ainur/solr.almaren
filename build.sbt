@@ -13,18 +13,12 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % sparkVersion % "provided",
   "org.apache.spark" %% "spark-sql" % sparkVersion % "provided",
   "com.github.music-of-the-ainur" %% "almaren-framework" % "0.9.3-3.1" % "provided",
-  "com.lucidworks.spark" % "spark-solr" % "4.0.2" % "provided" excludeAll(
-    ExclusionRule(organization = "org.apache.hadoop"),
-    ExclusionRule(organization = "org.apache.spark")
-  ),
+  "com.lucidworks.spark" % "spark-solr" % "4.0.2" % "provided",
   // Mising library from spark-solr connector
   "commons-httpclient" % "commons-httpclient" % "3.1",
   "com.typesafe.scala-logging" %% "scala-logging" % "3.9.0",
   "org.scalatest" %% "scalatest" % "3.0.5" % "test",
-  "com.lucidworks.spark" % "spark-solr" % "4.0.2" % "test" excludeAll(
-    ExclusionRule(organization = "org.apache.hadoop"),
-    ExclusionRule(organization = "org.apache.spark")
-  )
+  "com.lucidworks.spark" % "spark-solr" % "4.0.2" % "test"
 )
 
 enablePlugins(GitVersioning)
