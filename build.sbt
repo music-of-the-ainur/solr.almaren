@@ -30,7 +30,7 @@ libraryDependencies ++= Seq(
 
 enablePlugins(GitVersioning)
 
-resolvers += "Central Maven repository" at "https://repo.maven.apache.org/maven2"
+resolvers += "maven-restlet" at "http://maven.restlet.org"
 
 resolvers +=
   "Sonatype OSS Snapshots" at "https://oss.sonatype.org/service/local/repositories/releases/content"
