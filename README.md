@@ -6,11 +6,18 @@
 libraryDependencies += "com.github.music-of-the-ainur" %% "solr-almaren" % "0.3.0-3.1"
 ```
 
+To run in spark-shell:
+
+```
+spark-shell --packages "com.github.music-of-the-ainur:solr-almaren_2.12:0.3.0-$SPARK_VERSION,com.github.music-of-the-ainur:almaren-framework_2.12:0.9.3-$SPARK_VERSION"
+```
+
+
 Solr Connector was implemented using [https://github.com/lucidworks/spark-solr](https://github.com/lucidworks/spark-solr). The *Solr Connector* just works on Solr Cloud.
 For all the options available for the connector check on this [link](https://github.com/lucidworks/spark-solr#configuration-and-tuning).
 
 ```
-spark-shell --master "local[*]" --packages "com.github.music-of-the-ainur:almaren-framework_2.12:0.9.3-3.1,com.github.music-of-the-ainur:solr-almaren_2.12:0.3.0-3.1" --repositories https://repo.boundlessgeo.com/main/
+spark-shell --master "local[*]" --packages "com.github.music-of-the-ainur:almaren-framework_2.12:0.9.3-3.1,com.github.music-of-the-ainur:solr-almaren_2.12:0.3.0-3.1"
 ```
 
 
