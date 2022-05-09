@@ -1,36 +1,29 @@
 ThisBuild / name := "solr.almaren"
 ThisBuild / organization := "com.github.music-of-the-ainur"
 
-lazy val scala211 = "2.11.12"
+lazy val scala212 = "2.12.15"
 
-crossScalaVersions := Seq(scala211)
-ThisBuild / scalaVersion := scala211
+ThisBuild / scalaVersion := scala212
 
-val sparkVersion = "2.4.4"
+val sparkVersion = "3.1.3"
 
 scalacOptions ++= Seq("-deprecation", "-feature")
 
 libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % sparkVersion % "provided",
   "org.apache.spark" %% "spark-sql" % sparkVersion % "provided",
-  "com.github.music-of-the-ainur" %% "almaren-framework" % "0.2.3-2-4" % "provided",
-  "com.lucidworks.spark" % "spark-solr" % "3.7.1" % "provided" excludeAll(
-    ExclusionRule(organization = "org.apache.hadoop"),
-    ExclusionRule(organization = "org.apache.spark")
-  ),
+  "com.github.music-of-the-ainur" %% "almaren-framework" % "0.9.3-3.1" % "provided",
+  "com.lucidworks.spark" % "spark-solr" % "4.0.2" % "provided",
   // Mising library from spark-solr connector
   "commons-httpclient" % "commons-httpclient" % "3.1",
   "com.typesafe.scala-logging" %% "scala-logging" % "3.9.0",
   "org.scalatest" %% "scalatest" % "3.0.5" % "test",
-  "com.lucidworks.spark" % "spark-solr" % "3.7.1" % "test" excludeAll(
-    ExclusionRule(organization = "org.apache.hadoop"),
-    ExclusionRule(organization = "org.apache.spark")
-  )
+  "com.lucidworks.spark" % "spark-solr" % "4.0.2" % "test"
 )
 
 enablePlugins(GitVersioning)
 
-resolvers += "maven-restlet" at "http://maven.restlet.org"
+resolvers += "Central Maven repository" at "https://repo.maven.apache.org/maven2"
 
 resolvers +=
   "Sonatype OSS Snapshots" at "https://oss.sonatype.org/service/local/repositories/releases/content"
@@ -47,6 +40,12 @@ ThisBuild / developers := List(
     name  = "Daniel Mantovani",
     email = "daniel.mantovani@modak.com",
     url   = url("https://github.com/music-of-the-ainur")
+  ),
+  Developer(
+    id = "badrinathpatchikolla",
+    name = "Badrinath Patchikolla",
+    email = "badrinath.patchikolla@modakanalytics.com",
+    url = url("https://github.com/music-of-the-ainur")
   )
 )
 
