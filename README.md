@@ -3,13 +3,13 @@
 [![Build Status](https://travis-ci.com/music-of-the-ainur/solr.almaren.svg?branch=master)](https://travis-ci.com/music-of-the-ainur/solr.almaren)
 
 ```
-libraryDependencies += "com.github.music-of-the-ainur" %% "solr-almaren" % "0.3.2-$SPARK_VERSION"
+libraryDependencies += "com.github.music-of-the-ainur" %% "solr-almaren" % "0.3.3-3.2"
 ```
 
 To run in spark-shell:
 
 ```
-spark-shell --packages "com.github.music-of-the-ainur:solr-almaren_2.12:0.3.2-$SPARK_VERSION,com.github.music-of-the-ainur:almaren-framework_2.12:0.9.4-$SPARK_VERSION"
+spark-shell --packages "com.github.music-of-the-ainur:solr-almaren_2.12:0.3.3-3.2,com.github.music-of-the-ainur:almaren-framework_2.12:0.9.4-`3.2"
 ```
 
 
