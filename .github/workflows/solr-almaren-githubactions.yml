@@ -1,7 +1,6 @@
 name: Solr-Almaren
 on: [push, pull_request]
 
-
 jobs:
   Build:
     runs-on: ubuntu-20.04
