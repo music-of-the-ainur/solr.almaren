@@ -1,6 +1,6 @@
 # Solr Connector
 
-[![Build Status](https://travis-ci.com/music-of-the-ainur/solr.almaren.svg?branch=master)](https://travis-ci.com/music-of-the-ainur/solr.almaren)
+[![Build-Status](https://github.com/music-of-the-ainur/solr.almaren/actions/workflows/solr-almaren-githubactions.yml/badge.svg)](https://github.com/music-of-the-ainur/solr.almaren/actions/workflows/solr-almaren-githubactions.yml)
 
 Solr Connector was implemented using [https://github.com/lucidworks/spark-solr](https://github.com/lucidworks/spark-solr). The *Solr Connector* just works on Solr Cloud.
 For all the options available for the connector check on this [link](https://github.com/lucidworks/spark-solr#configuration-and-tuning).
