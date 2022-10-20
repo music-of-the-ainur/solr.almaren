@@ -31,7 +31,9 @@ jobs:
           curl -sSL https://raw.githubusercontent.com/moliware/travis-solr/master/travis-solr.sh | SOLR_VERSION=7.7.2 bash
           ./solr-7.7.2/bin/solr delete -c gettingstarted
           ./solr-7.7.2/bin/solr create -c gettingstarted
-        delay_after: 30
+        args:
+        - sleep
+        - "30"
       - name: Build and test scala version
         run: |
           PGPASSWORD="postgres" psql -c 'create database almaren;' -U postgres -h localhost 
