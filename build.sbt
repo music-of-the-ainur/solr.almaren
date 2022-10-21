@@ -8,20 +8,23 @@ ThisBuild / scalaVersion := scala211
 
 val sparkVersion = "2.4.4"
 
+val majorVersionReg = "([0-9]+\\.[0-9]+).{0,}".r
+val majorVersionReg(majorVersion) = sparkVersion
+
 scalacOptions ++= Seq("-deprecation", "-feature")
 
 libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % sparkVersion % "provided",
   "org.apache.spark" %% "spark-sql" % sparkVersion % "provided",
-  "com.github.music-of-the-ainur" %% "almaren-framework" % "0.2.3-2-4" % "provided",
+  "com.github.music-of-the-ainur" %% "almaren-framework" % s"0.9.8-${majorVersion}" % "provided",
   "com.lucidworks.spark" % "spark-solr" % "3.7.1" % "provided" excludeAll(
     ExclusionRule(organization = "org.apache.hadoop"),
     ExclusionRule(organization = "org.apache.spark")
   ),
   // Mising library from spark-solr connector
   "commons-httpclient" % "commons-httpclient" % "3.1",
-  "com.typesafe.scala-logging" %% "scala-logging" % "3.9.0",
-  "org.scalatest" %% "scalatest" % "3.0.5" % "test",
+  "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5",
+  "org.scalatest" %% "scalatest" % "3.2.14" % "test",
   "com.lucidworks.spark" % "spark-solr" % "3.7.1" % "test" excludeAll(
     ExclusionRule(organization = "org.apache.hadoop"),
     ExclusionRule(organization = "org.apache.spark")

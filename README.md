@@ -1,24 +1,32 @@
 # Solr Connector
 
-[![Build Status](https://travis-ci.com/music-of-the-ainur/solr.almaren.svg?branch=master)](https://travis-ci.com/music-of-the-ainur/solr.almaren)
-
-```
-libraryDependencies += "com.github.music-of-the-ainur" %% "solr-almaren" % "0.3.2-2.4"
-```
-
-To run in spark-shell:
-
-```
-spark-shell --packages "com.github.music-of-the-ainur:solr-almaren_2.12:0.3.2-$SPARK_VERSION,com.github.music-of-the-ainur:almaren-framework_2.12:0.9.3-$SPARK_VERSION"
-```
-
+[![Build Status](https://github.com/music-of-the-ainur/solr.almaren/actions/workflows/solr.almaren-githubactions.yml/badge.svg)](https://github.com/music-of-the-ainur/solr.almaren/actions/workflows/solr.almaren-githubactions.yml)
 
 Solr Connector was implemented using [https://github.com/lucidworks/spark-solr](https://github.com/lucidworks/spark-solr). The *Solr Connector* just works on Solr Cloud.
 For all the options available for the connector check on this [link](https://github.com/lucidworks/spark-solr#configuration-and-tuning).
 
+To add Solr Connector dependency to your sbt build:
 ```
-spark-shell --master "local[*]" --packages "com.github.music-of-the-ainur:almaren-framework_2.12:0.9.3-2.4,com.github.music-of-the-ainur:solr-almaren_2.12:0.3.2-2.4"
+libraryDependencies += "com.github.music-of-the-ainur" %% "solr-almaren" % "0.3.4-2.4"
 ```
+To run in spark-shell:
+```
+spark-shell --master "local[*]" --packages "com.github.music-of-the-ainur:almaren-framework_2.11:0.9.8-2.4,com.github.music-of-the-ainur:solr-almaren_2.11:0.3.4-2.4"
+```
+### Connector Usage
+
+#### Maven / Ivy Package Usage
+The connector is also available from the
+[Maven Central](https://mvnrepository.com/artifact/com.github.music-of-the-ainur)
+repository. It can be used using the `--packages` option or the
+`spark.jars.packages` configuration property. Use the following value
+
+| version                      | Connector Artifact                                           |
+|------------------------------|--------------------------------------------------------------|
+| Spark 3.3.x and scala 2.12   | `com.github.music-of-the-ainur:solr-almaren_2.12:0.3.4-3.3`  |
+| Spark 3.2.x and scala 2.12   | `com.github.music-of-the-ainur:solr-almaren_2.12:0.3.4-3.2`  |
+| Spark 3.1.x and scala 2.12   | `com.github.music-of-the-ainur:solr-almaren_2.12:0.3.4-3.1`  |
+| Spark 2.4.x and scala 2.11   | `com.github.music-of-the-ainur:solr-almaren_2.11:0.3.4-2.4`  |
 
 ## Source and Target
 
