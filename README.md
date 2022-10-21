@@ -1,21 +1,16 @@
 # Solr Connector
 
-[![Build Status](https://github.com/music-of-the-ainur/solr.almaren/actions/workflows/solr.almaren-githubactions.yml/badge.svg)](https://github.com/music-of-the-ainur/solr.almaren/actions/workflows/solr.almaren-githubactions.yml)
+[![Solr-Almaren](https://github.com/music-of-the-ainur/solr.almaren/actions/workflows/solr.almaren-githubactions.yml/badge.svg)](https://github.com/music-of-the-ainur/solr.almaren/actions/workflows/solr.almaren-githubactions.yml)
 
-To add solr.almaren  dependency to your sbt build:
+Solr Connector was implemented using [https://github.com/lucidworks/spark-solr](https://github.com/lucidworks/spark-solr). The *Solr Connector* just works on Solr Cloud.
+For all the options available for the connector check on this [link](https://github.com/lucidworks/spark-solr#configuration-and-tuning).
+
+To add Solr Almaren  dependency to your sbt build:
 ```
 libraryDependencies += "com.github.music-of-the-ainur" %% "solr-almaren" % "0.3.4-3.3"
 ```
 
 To run in spark-shell:
-For scala-version(2.12):
-```
-spark-shell --packages "com.github.music-of-the-ainur:solr-almaren_2.12:0.3.4-3.3,com.github.music-of-the-ainur:almaren-framework_2.12:0.9.8-3.3"
-```
-
-Solr Connector was implemented using [https://github.com/lucidworks/spark-solr](https://github.com/lucidworks/spark-solr). The *Solr Connector* just works on Solr Cloud.
-For all the options available for the connector check on this [link](https://github.com/lucidworks/spark-solr#configuration-and-tuning).
-
 ```
 spark-shell --master "local[*]" --packages "com.github.music-of-the-ainur:almaren-framework_2.12:0.9.8-3.3,com.github.music-of-the-ainur:solr-almaren_2.12:0.3.4-3.3"
 ```
