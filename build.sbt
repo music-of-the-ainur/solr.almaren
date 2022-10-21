@@ -8,12 +8,15 @@ ThisBuild / scalaVersion := scala211
 
 val sparkVersion = "2.4.4"
 
+val majorVersionReg = "([0-9]+\\.[0-9]+).{0,}".r
+val majorVersionReg(majorVersion) = sparkVersion
+
 scalacOptions ++= Seq("-deprecation", "-feature")
 
 libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % sparkVersion % "provided",
   "org.apache.spark" %% "spark-sql" % sparkVersion % "provided",
-  "com.github.music-of-the-ainur" %% "almaren-framework" % "0.9.8-2-4" % "provided",
+  "com.github.music-of-the-ainur" %% "almaren-framework" % s"0.9.8-${majorVersion}" % "provided",
   "com.lucidworks.spark" % "spark-solr" % "3.7.1" % "provided" excludeAll(
     ExclusionRule(organization = "org.apache.hadoop"),
     ExclusionRule(organization = "org.apache.spark")
