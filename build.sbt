@@ -5,21 +5,27 @@ lazy val scala212 = "2.12.15"
 
 ThisBuild / scalaVersion := scala212
 
-val sparkVersion = "3.1.3"
+val sparkVersion = "3.3.0"
+val majorVersionReg = "([0-9]+\\.[0-9]+).{0,}".r
+
+val majorVersionReg(majorVersion) = sparkVersion
 
 scalacOptions ++= Seq("-deprecation", "-feature")
 
 libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % sparkVersion % "provided",
   "org.apache.spark" %% "spark-sql" % sparkVersion % "provided",
-  "com.github.music-of-the-ainur" %% "almaren-framework" % "0.9.3-3.1" % "provided",
+  "com.github.music-of-the-ainur" %% "almaren-framework" % s"0.9.8-${majorVersion}" % "provided",
   "com.lucidworks.spark" % "spark-solr" % "4.0.2" % "provided",
   // Mising library from spark-solr connector
   "commons-httpclient" % "commons-httpclient" % "3.1",
-  "com.typesafe.scala-logging" %% "scala-logging" % "3.9.0",
-  "org.scalatest" %% "scalatest" % "3.0.5" % "test",
-  "com.lucidworks.spark" % "spark-solr" % "4.0.2" % "test"
+  "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5",
+  "org.scalatest" %% "scalatest" % "3.2.14" % "test",
+  "com.lucidworks.spark" % "spark-solr" % "4.0.2" % "test",
+  "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.12.2"
 )
+
+ThisBuild / useCoursier := false
 
 enablePlugins(GitVersioning)
 
@@ -57,6 +63,7 @@ ThisBuild / organizationHomepage := Some(url("https://github.com/music-of-the-ai
 
 
 // Remove all additional repository other than Maven Central from POM
+credentials += Credentials(Path.userHome / ".sbt" / "sonatype_credential")
 ThisBuild / pomIncludeRepository := { _ => false }
 ThisBuild / publishTo := {
   val nexus = "https://oss.sonatype.org/"
