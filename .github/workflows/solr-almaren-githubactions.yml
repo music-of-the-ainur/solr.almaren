@@ -29,14 +29,16 @@ jobs:
       - name: Setup Solr in Build Machine
         run: |
           curl -sSL https://raw.githubusercontent.com/moliware/travis-solr/master/travis-solr.sh | SOLR_VERSION=7.7.2 bash
-          rm ./solr-7.7.2/server/solr/configsets/_default/conf/managed-schema
-          cp src/test/resources/data/managed-schema ./solr-7.7.2/server/solr/configsets/_default/conf
           ./solr-7.7.2/bin/solr delete -c gettingstarted
           ./solr-7.7.2/bin/solr create -c gettingstarted
+      - name: Sleep for 30 seconds
+        uses: jakejarvis/wait-action@master
+        with:
+          time: '30s'
       - name: Build and test scala version
         run: |
-          PGPASSWORD="postgres" psql -c 'create database almaren;' -U postgres -h localhost
-          PGPASSWORD="postgres" psql -c "ALTER USER postgres PASSWORD 'postgres' ;" -U postgres -h localhost
+          PGPASSWORD="postgres" psql -c 'create database almaren;' -U postgres -h localhost 
+          PGPASSWORD="postgres" psql -c "ALTER USER postgres PASSWORD 'postgres' ;" -U postgres -h localhost 
           PGPASSWORD="postgres" psql -c 'create role runner;' -U postgres -h localhost
           PGPASSWORD="postgres" psql -c 'ALTER ROLE "runner" WITH  LOGIN SUPERUSER INHERIT CREATEDB CREATEROLE REPLICATION;' -U postgres -h localhost
           sbt ++2.12.15 test
