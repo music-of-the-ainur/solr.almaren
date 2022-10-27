@@ -15,11 +15,8 @@ To run in spark-shell:
 spark-shell --master "local[*]" --packages "com.github.music-of-the-ainur:almaren-framework_2.12:0.9.8-3.3,com.github.music-of-the-ainur:solr-almaren_2.12:0.3.4-3.3"
 ```
 
-#### Maven / Ivy Package Usage
-The connector is also available from the
-[Maven Central](https://mvnrepository.com/artifact/com.github.music-of-the-ainur)
-repository. It can be used using the `--packages` option or the
-`spark.jars.packages` configuration property. Use the following value
+Solr Connector is available in [Maven Central](https://mvnrepository.com/artifact/com.github.music-of-the-ainur)
+repository.
 
 | version                   | Connector Artifact                                          |
 |---------------------------|-------------------------------------------------------------|
@@ -59,7 +56,6 @@ almaren.builder.sourceSolr("collection","zkHost1:2181,zkHost2:2181",Map("field_n
 almaren.builder.targetSolr("collection","zkHost1:2181,zkHost2:2181",options)
 
 ```
-
 
 
 ### Target:
