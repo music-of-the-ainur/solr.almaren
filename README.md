@@ -58,7 +58,6 @@ almaren.builder.targetSolr("collection","zkHost1:2181,zkHost2:2181",options)
 ```
 
 
-
 ### Target:
 #### Parameters
 
