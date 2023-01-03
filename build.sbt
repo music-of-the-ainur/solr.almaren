@@ -31,11 +31,9 @@ libraryDependencies ++= Seq(
   )
 )
 
-ThisBuild / useCoursier := false
-
 enablePlugins(GitVersioning)
 
-resolvers += "Central Maven repository" at "https://repo.maven.apache.org/maven2"
+resolvers += "maven-restlet" at "http://maven.restlet.org"
 
 resolvers +=
   "Sonatype OSS Snapshots" at "https://oss.sonatype.org/service/local/repositories/releases/content"
@@ -76,9 +74,6 @@ ThisBuild / publishTo := {
   if (isSnapshot.value) Some("snapshots" at nexus + "content/repositories/snapshots")
   else Some("releases" at nexus + "service/local/staging/deploy/maven2")
 }
-
-ThisBuild / publishMavenStyle := true
-updateOptions := updateOptions.value.withGigahorse(false)
 
 ThisBuild / publishMavenStyle := true
 updateOptions := updateOptions.value.withGigahorse(false)
