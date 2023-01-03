@@ -26,15 +26,15 @@ jobs:
           distribution: temurin
           java-version: 8
           cache: sbt
-      - name: Sleep for 30 seconds
-        uses: jakejarvis/wait-action@master
-        with:
-          time: '30s'
       - name: Setup Solr
         run: |
           curl -sSL https://raw.githubusercontent.com/moliware/travis-solr/master/travis-solr.sh | SOLR_VERSION=7.7.2 bash
           ./solr-7.7.2/bin/solr delete -c gettingstarted
           ./solr-7.7.2/bin/solr create -c gettingstarted
+      - name: Sleep for 30 seconds
+        uses: jakejarvis/wait-action@master
+        with:
+          time: '30s'
       - name: Build and test scala version
         run: |
           PGPASSWORD="postgres" psql -c 'create database almaren;' -U postgres -h localhost 
