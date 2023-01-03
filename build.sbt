@@ -6,7 +6,7 @@ lazy val scala211 = "2.11.12"
 crossScalaVersions := Seq(scala211)
 ThisBuild / scalaVersion := scala211
 
-val sparkVersion = "2.4.4"
+val sparkVersion = "2.4.8"
 
 val majorVersionReg = "([0-9]+\\.[0-9]+).{0,}".r
 val majorVersionReg(majorVersion) = sparkVersion
@@ -31,9 +31,11 @@ libraryDependencies ++= Seq(
   )
 )
 
+ThisBuild / useCoursier := false
+
 enablePlugins(GitVersioning)
 
-resolvers += "maven-restlet" at "http://maven.restlet.org"
+resolvers += "Central Maven repository" at "https://repo.maven.apache.org/maven2"
 
 resolvers +=
   "Sonatype OSS Snapshots" at "https://oss.sonatype.org/service/local/repositories/releases/content"
@@ -74,6 +76,9 @@ ThisBuild / publishTo := {
   if (isSnapshot.value) Some("snapshots" at nexus + "content/repositories/snapshots")
   else Some("releases" at nexus + "service/local/staging/deploy/maven2")
 }
+
+ThisBuild / publishMavenStyle := true
+updateOptions := updateOptions.value.withGigahorse(false)
 
 ThisBuild / publishMavenStyle := true
 updateOptions := updateOptions.value.withGigahorse(false)
