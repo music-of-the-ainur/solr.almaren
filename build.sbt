@@ -18,7 +18,7 @@ libraryDependencies ++= Seq(
   "commons-httpclient" % "commons-httpclient" % "3.1",
   "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5",
   "org.scalatest" %% "scalatest" % "3.2.14" % "test",
-  "com.lucidworks.spark" % "spark-solr" % "4.0.2" % "test"
+  "com.lucidworks.spark" % "spark-solr" % "4.0.4" % "test"
 )
 
 ThisBuild / useCoursier := false
