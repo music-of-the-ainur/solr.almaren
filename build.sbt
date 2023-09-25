@@ -20,10 +20,11 @@ libraryDependencies ++= Seq(
   // Mising library from spark-solr connector
   "commons-httpclient" % "commons-httpclient" % "3.1",
   "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5",
+  "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5" % "test",
   "org.scalatest" %% "scalatest" % "3.2.14" % "test",
   "com.lucidworks.spark" % "spark-solr" % "4.0.4" % "test",
   "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.12.2"
-).map(_.exclude("org.apache.logging.log4j", "log4j-core"))
+)
 
 ThisBuild / useCoursier := false
 
