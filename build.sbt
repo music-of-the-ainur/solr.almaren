@@ -23,7 +23,7 @@ libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "3.2.14" % "test",
   "com.lucidworks.spark" % "spark-solr" % "4.0.4" % "test",
   "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.12.2"
-)
+).map(_.exclude("org.apache.logging.log4j", "log4j-core"))
 
 ThisBuild / useCoursier := false
 
