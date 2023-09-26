@@ -5,20 +5,20 @@ lazy val scala212 = "2.12.10"
 
 ThisBuild / scalaVersion := scala212
 
-val sparkVersion = "3.2.1"
+val sparkVersion = "3.2.4"
 
 scalacOptions ++= Seq("-deprecation", "-feature")
 
 libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % sparkVersion % "provided",
   "org.apache.spark" %% "spark-sql" % sparkVersion % "provided",
-  "com.github.music-of-the-ainur" %% "almaren-framework" % "0.9.8-3.2" % "provided",
-  "com.lucidworks.spark" % "spark-solr" % "4.0.2" % "provided",
+  "com.github.music-of-the-ainur" %% "almaren-framework" % "0.9.10-3.2" % "provided",
+  "com.lucidworks.spark" % "spark-solr" % "4.0.4" % "provided",
   // Mising library from spark-solr connector
   "commons-httpclient" % "commons-httpclient" % "3.1",
   "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5",
   "org.scalatest" %% "scalatest" % "3.2.14" % "test",
-  "com.lucidworks.spark" % "spark-solr" % "4.0.2" % "test"
+  "com.lucidworks.spark" % "spark-solr" % "4.0.4" % "test"
 )
 
 ThisBuild / useCoursier := false
