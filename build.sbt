@@ -5,7 +5,7 @@ lazy val scala212 = "2.12.10"
 
 ThisBuild / scalaVersion := scala212
 
-val sparkVersion = "3.3.0"
+val sparkVersion = "3.4.1"
 val majorVersionReg = "([0-9]+\\.[0-9]+).{0,}".r
 
 val majorVersionReg(majorVersion) = sparkVersion
@@ -15,13 +15,14 @@ scalacOptions ++= Seq("-deprecation", "-feature")
 libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % sparkVersion % "provided",
   "org.apache.spark" %% "spark-sql" % sparkVersion % "provided",
-  "com.github.music-of-the-ainur" %% "almaren-framework" % s"0.9.8-${majorVersion}" % "provided",
-  "com.lucidworks.spark" % "spark-solr" % "4.0.2" % "provided",
+  "com.github.music-of-the-ainur" %% "almaren-framework" % s"0.9.10-${majorVersion}" % "provided",
+  "com.lucidworks.spark" % "spark-solr" % "4.0.4" % "provided",
   // Mising library from spark-solr connector
   "commons-httpclient" % "commons-httpclient" % "3.1",
   "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5",
+  "org.apache.logging.log4j" % "log4j-core" % "2.20.0" % "test",
   "org.scalatest" %% "scalatest" % "3.2.14" % "test",
-  "com.lucidworks.spark" % "spark-solr" % "4.0.2" % "test",
+  "com.lucidworks.spark" % "spark-solr" % "4.0.4" % "test",
   "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.12.2"
 )
 
